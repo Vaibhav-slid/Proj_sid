@@ -1,0 +1,10 @@
+.footer {
+  display: flexbox;
+  flex-wrap: wrap;
+  flex: 1 0 200px;
+  color: white;
+  height: 40vh;
+  width: 100vw;
+  padding: 20px;
+  background-color: rgb(11, 61, 85);
+}

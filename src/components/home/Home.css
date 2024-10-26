@@ -1,0 +1,45 @@
+.home {
+  flex: 1;
+  display: flexbox;
+  background-color: bisque;
+  gap: 20px;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+}
+
+.namecard-container {
+  padding:  4rem;
+  display: flex;
+  height: 20vh;
+  width: 100vw;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(233, 226, 199),
+    rgba(155, 129, 86, 0.936)
+  );
+  box-shadow: 0 5px 8px rgba(155, 129, 86, 0.936);
+}
+
+.namecard-links {
+  color: black;
+  cursor: pointer;
+}
+
+.namecard-links:hover {
+  text-decoration-line: underline;
+  transform: translateY(5px);
+}
+
+.experiment {
+  height: 50vh;
+  width: 100%;
+  background-color: peachpuff;
+  border-top-left-radius:  300px 50%;
+  border-top-right-radius: 50px 20%;
+}
