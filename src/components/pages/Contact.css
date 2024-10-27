@@ -1,0 +1,31 @@
+.body {
+  display: flex;
+  flex: 1;
+}
+
+.namecard-container {
+  display: flex;
+  padding: 4rem;
+  height: 20vh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(233, 226, 199),
+    rgba(155, 129, 86, 0.936)
+  );
+  box-shadow: 0 5px 8px rgba(155, 129, 86, 0.936);
+}
+
+.namecard__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.namecard__info h1 {
+  text-align: left;
+  font-family: cursive;
+}

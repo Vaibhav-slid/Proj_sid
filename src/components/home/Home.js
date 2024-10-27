@@ -1,18 +1,25 @@
 import React from "react";
 import "./Home.css";
-import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import ImageSlider from "../common/ImageSlider";
+import SliderComponent from "../common/SliderComponent";
 import CurvyBox from "../common/CurvyBox";
+import image1 from "../../assets/download1.jpg";
+import image2 from "../../assets/download2.jpg";
+import image3 from "../../assets/download3.jpg";
 function Home() {
-  const imageStock = [
-    "https://via.placeholder.com/800x300?text=Image+3",
-    "https://via.placeholder.com/800x300?text=Image+3",
-    "https://via.placeholder.com/800x300?text=Image+3",
+  const items = [
+    { image: image1 },
+    {
+      text: `The Computer Science Department is dedicated to providing high-quality education and research opportunities in the field of computer science and technology. The department offers a comprehensive curriculum that covers a wide range of topics, including programming, algorithms, data structures, software engineering, artificial intelligence, machine learning, and cybersecurity.
+
+Students are encouraged to engage in hands-on projects, internships, and collaborative research to apply theoretical knowledge in real-world scenarios. The department also emphasizes the importance of ethical practices in computing and promotes innovation through various workshops, seminars, and competitions.`,
+    },
+    { image: image2 },
+    { image: image3 },
   ];
+  const imageStock = [image1, image2, image3];
   return (
     <div className="home">
-      <Navbar />
       <div className="body">
         <div className="namecard-container">
           <div className="namecard-info">
@@ -38,10 +45,23 @@ function Home() {
           </div>
         </div>
       </div>
-      <ImageSlider images={imageStock} />
+      <SliderComponent images={imageStock} transitionType={"slide"} />
       <div style={{ height: "100vh" }} />
-      <CurvyBox backgroundColor={'red'} />
-      <div className="experiment"></div>
+      <CurvyBox
+        backgroundImage={"../../assets/download3.jpg"}
+        children={
+          <SliderComponent
+            images={imageStock}
+            height={"500px"}
+            width={"800px"}
+            transitionType={"fade"}
+          />
+        }
+      />
+      <CurvyBox
+        backgroundColor={"red"}
+        children={<SliderComponent images={imageStock} width={"60%"} />}
+      />
       <Footer />
     </div>
   );

@@ -1,26 +1,48 @@
+:root {
+  --curvybox-background: rgb(250, 169, 204);
+}
+
 .curvybox-container {
-  display: flexbox;
+  display: flex;
   flex: 1;
   height: auto;
   width: 100%;
+  margin: 20vh 0;
 }
 
 .curvybox__body {
-    position: relative;
-    height: 300px;
-    width: 100%;
-    background-color: #F66969;
+  position: relative;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0;
+  background-color: var(--curvybox-background);
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.curvybox__body::after,
+.curvybox__body::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  height: 150px;
+  width: 120%;
+  left: -10%;
+  border-top-left-radius: 50% 70px;
+  border-top-right-radius: 50% 70px;
+  box-shadow: 0 -75px 0 0 var(--curvybox-background);
+}
+
+.curvybox__body::after {
+  top: -170px;
+  transform: rotate(180deg);
 }
 
 .curvybox__body::before {
-    content: "";
-    position: absolute;
-    background-color: transparent;
-    bottom: -170px;
-    height: 150px;
-    width: 100%;
-    left: 0;
-    border-top-left-radius: 50% 20px;
-    border-top-right-radius: 50% 20px;
-    box-shadow: 0 -75px 0 0 red;
+  bottom: -170px;
 }

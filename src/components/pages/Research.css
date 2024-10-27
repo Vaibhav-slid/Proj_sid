@@ -1,18 +1,12 @@
-.home {
-  flex: 1;
-  display: flexbox;
-  gap: 20px;
-}
-
 .body {
   display: flex;
   flex: 1;
 }
 
 .namecard-container {
-  padding:  4rem;
+  padding: 4rem;
   display: flex;
-  height: auto;
+  height: 20vh;
   width: 100vw;
   align-items: center;
   flex-direction: row;
@@ -33,12 +27,4 @@
 .namecard-links:hover {
   text-decoration-line: underline;
   transform: translateY(5px);
-}
-
-.experiment {
-  height: 50vh;
-  width: 100%;
-  background-color: peachpuff;
-  border-top-left-radius:  300px 50%;
-  border-top-right-radius: 50px 20%;
 }

@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import { CgChevronDown } from "react-icons/cg";
 
 const navbarOptions = [
   {
     label: "Home",
+    navigateTo: "/home",
+    dropdown: [],
+  },
+  {
+    label: "Lab",
+    navigateTo: "/lab",
     dropdown: [],
   },
   {
     label: "Research",
+    navigateTo: "/research",
     dropdown: [
       { label: "Research Paper 1", link: "#" },
       { label: "Research Paper 2", link: "#" },
@@ -17,6 +26,7 @@ const navbarOptions = [
   },
   {
     label: "Projects",
+    navigateTo: "/projects",
     dropdown: [
       { label: "Project 1", link: "#" },
       { label: "Project 2", link: "#" },
@@ -25,7 +35,7 @@ const navbarOptions = [
   },
   {
     label: "About",
-    link: "#about",
+    navigateTo: "#about",
     dropdown: [
       { label: "Team", link: "#" },
       { label: "Careers", link: "#" },
@@ -33,11 +43,13 @@ const navbarOptions = [
   },
   {
     label: "Contact",
+    navigateTo: "/contact",
     dropdown: [],
   },
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
@@ -92,8 +104,11 @@ const Navbar = () => {
         <ul className="navbar__menu-list">
           {navbarOptions.map((item, index) => (
             <li key={index} className="navbar__menu-item">
-              <a href={item?.link}>
-                <span>{item?.label}</span>
+              <a href={item?.navigateTo}>
+                <span>
+                  {item?.label}
+                  {item?.dropdown.length > 0 && <CgChevronDown />}
+                </span>
               </a>
               {item?.dropdown.length > 0 && (
                 <ul className="navbar__dropdown">
