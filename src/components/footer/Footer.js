@@ -54,6 +54,10 @@ function Footer() {
     { label: "X", icon: FaXTwitter },
   ];
 
+  const handleLinkForwarding = (name) => {
+    alert(`${name} external link forwarding`);
+  };
+
   return (
     <footer id="about" className="footer-container">
       <div className="footer__rowbox">
@@ -73,7 +77,12 @@ function Footer() {
       <div className="footer__socialMedia">
         {socialMediaLinks.map((item, index) => (
           <div key={index} className="footer__socialMedia__icon">
-            {<item.icon height={"30px"} />}
+            {
+              <item.icon
+                onClick={() => handleLinkForwarding(item?.label)}
+                height={"30px"}
+              />
+            }
           </div>
         ))}
       </div>

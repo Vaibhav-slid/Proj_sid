@@ -9,11 +9,20 @@ import image3 from "../../assets/download3.jpg";
 function Home() {
   const items = [
     { image: image1 },
-    {
-      text: `The Computer Science Department is dedicated to providing high-quality education and research opportunities in the field of computer science and technology. The department offers a comprehensive curriculum that covers a wide range of topics, including programming, algorithms, data structures, software engineering, artificial intelligence, machine learning, and cybersecurity.
-
-Students are encouraged to engage in hands-on projects, internships, and collaborative research to apply theoretical knowledge in real-world scenarios. The department also emphasizes the importance of ethical practices in computing and promotes innovation through various workshops, seminars, and competitions.`,
-    },
+    // {
+    //   text: `The Computer Science Department is dedicated to providing
+    //         high-quality education and research opportunities in the field of
+    //         computer science and technology. The department offers a
+    //         comprehensive curriculum that covers a wide range of topics,
+    //         including programming, algorithms, data structures, software
+    //         engineering, artificial intelligence, machine learning, and
+    //         cybersecurity. Students are encouraged to engage in hands-on
+    //         projects, internships, and collaborative research to apply
+    //         theoretical knowledge in real-world scenarios. The department also
+    //         emphasizes the importance of ethical practices in computing and
+    //         promotes innovation through various workshops, seminars, and
+    //         competitions.`,
+    // },
     { image: image2 },
     { image: image3 },
   ];
@@ -45,8 +54,31 @@ Students are encouraged to engage in hands-on projects, internships, and collabo
           </div>
         </div>
       </div>
-      <SliderComponent images={imageStock} transitionType={"slide"} />
-      <div style={{ height: "100vh" }} />
+      {/* <SliderComponent images={imageStock} transitionType={"slide"} /> */}
+      {/* <div style={{ height: "100vh" }} /> */}
+      <div className="info-container">
+        <div className="info-box">
+          <h3 style={{fontFamily: 'cursive'}}>
+            The Computer Science Department is dedicated to providing
+            high-quality education and research opportunities in the field of
+            computer science and technology. The department offers a
+            comprehensive curriculum that covers a wide range of topics,
+            including programming, algorithms, data structures, software
+            engineering, artificial intelligence, machine learning, and
+            cybersecurity. Students are encouraged to engage in hands-on
+            projects, internships, and collaborative research to apply
+            theoretical knowledge in real-world scenarios. The department also
+            emphasizes the importance of ethical practices in computing and
+            promotes innovation through various workshops, seminars, and
+            competitions.
+          </h3>
+        </div>
+        <div className="profile-cards-box">
+          {items.map((item, index) => (
+            <img key={index} src={item.image} className="profile-cards" />
+          ))}
+        </div>
+      </div>
       <CurvyBox
         backgroundImage={"../../assets/download3.jpg"}
         children={
@@ -59,7 +91,7 @@ Students are encouraged to engage in hands-on projects, internships, and collabo
         }
       />
       <CurvyBox
-        backgroundColor={"red"}
+        backgroundColor={"#faffeb"}
         children={<SliderComponent images={imageStock} width={"60%"} />}
       />
       <Footer />

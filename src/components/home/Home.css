@@ -10,7 +10,7 @@
 }
 
 .namecard-container {
-  padding:  4rem;
+  padding: 4rem;
   display: flex;
   height: auto;
   width: 100vw;
@@ -35,10 +35,46 @@
   transform: translateY(5px);
 }
 
+.info-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.info-box {
+  flex-grow: 1;
+  max-width: 50%;
+  border-radius: 30px;
+  padding: 20px;
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(85, 156, 167),
+    rgb(25, 116, 182)
+  );
+}
+
+.profile-cards-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile-cards {
+  height: 220px;
+  width: 250px;
+  border-radius: 30% 20px /30%;
+}
+
 .experiment {
   height: 50vh;
   width: 100%;
   background-color: peachpuff;
-  border-top-left-radius:  300px 50%;
+  border-top-left-radius: 300px 50%;
   border-top-right-radius: 50px 20%;
 }

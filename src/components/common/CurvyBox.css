@@ -36,6 +36,7 @@
   border-top-left-radius: 50% 70px;
   border-top-right-radius: 50% 70px;
   box-shadow: 0 -75px 0 0 var(--curvybox-background);
+  z-index: 2;
 }
 
 .curvybox__body::after {
@@ -45,4 +46,11 @@
 
 .curvybox__body::before {
   bottom: -170px;
+}
+
+@media (max-width: 700px) {
+  .curvybox__body::after {
+    border-top-left-radius: 50% 30px;
+    border-top-right-radius: 50% 30px;
+  }
 }
