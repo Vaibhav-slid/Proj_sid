@@ -7,6 +7,7 @@
 .body {
   display: flex;
   flex: 1;
+  background-image: url("../../assets/websiteBG.jpg");
 }
 
 .namecard-container {
@@ -36,18 +37,20 @@
 }
 
 .info-container {
-  display: flex;
-  width: 100%;
+  display: inline-flex;
+  width: 90%;
   height: auto;
   flex-direction: row;
+  flex: 1 0 30%;
   justify-content: space-around;
   align-items: center;
   align-content: center;
+  margin-top: 30px;
 }
 
 .info-box {
   flex-grow: 1;
-  max-width: 50%;
+  height: 100%;
   border-radius: 30px;
   padding: 20px;
   background-image: linear-gradient(
@@ -60,15 +63,19 @@
 .profile-cards-box {
   display: flex;
   flex-wrap: wrap;
+  min-width: 40%;
   align-items: center;
   justify-content: center;
   gap: 20px;
+  transform: rotate(20deg);
 }
 
 .profile-cards {
   height: 220px;
   width: 250px;
   border-radius: 30% 20px /30%;
+  transform: rotate(-20deg);
+  background-color: peachpuff;
 }
 
 .experiment {
@@ -77,4 +84,20 @@
   background-color: peachpuff;
   border-top-left-radius: 300px 50%;
   border-top-right-radius: 50px 20%;
+}
+
+.home__image-container {
+  width: 100%;
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: antiquewhite;
+  padding: 40px 0;
+}
+
+@media (max-width: 700px) {
+  .info-container {
+    flex-direction: column;
+  }
 }

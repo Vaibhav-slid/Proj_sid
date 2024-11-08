@@ -1,31 +1,180 @@
-.body {
-  display: flex;
-  flex: 1;
-}
+/* Importing the 'Inter' font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
-.namecard-container {
+/* Contact Page Styles */
+.contact-container {
   display: flex;
-  padding: 4rem;
-  height: 20vh;
-  width: 100vw;
-  flex-direction: column;
-  align-items: flex-start;
+  height: 100vh;
   background-image: linear-gradient(
     to bottom right,
     rgb(233, 226, 199),
     rgba(155, 129, 86, 0.936)
   );
-  box-shadow: 0 5px 8px rgba(155, 129, 86, 0.936);
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.namecard__info {
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  background: rgba(155, 129, 86, 0.1); /* Light semi-transparent background */
+  backdrop-filter: blur(15px); /* Glassmorphism effect */
+  overflow: hidden;
+}
+
+/* Contact Info Section */
+.contact-info {
+  width: 40%;
+  padding-right: 2rem;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #3a3a3a;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  color: #6b6b6b;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #5f6368;
+  text-align: left;
+}
+
+.contact-details li {
+  margin-bottom: 1rem;
+}
+
+.contact-details a {
+  color: #ff8e72;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+  width: 55%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.namecard__info h1 {
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: formEntrance 1s ease-out;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #4a4a4a;
+  margin-bottom: 0.5rem;
+  font-family: "Inter", sans-serif;
   text-align: left;
-  font-family: cursive;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #e4e4e4;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #ff8e72;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 1.2rem;
+  background-color: #ff8e72;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 140, 72, 0.3);
+}
+
+.submit-button:hover {
+  background-color: #ff7c58;
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: red;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Success Message */
+.thank-you-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4caf50;
+  padding: 1rem;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Animations */
+@keyframes formEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -6,6 +6,7 @@ import CurvyBox from "../common/CurvyBox";
 import image1 from "../../assets/download1.jpg";
 import image2 from "../../assets/download2.jpg";
 import image3 from "../../assets/download3.jpg";
+import personImage from "../../assets/personImage.jpg";
 function Home() {
   const items = [
     { image: image1 },
@@ -25,6 +26,12 @@ function Home() {
     // },
     { image: image2 },
     { image: image3 },
+  ];
+
+  const personImg = [
+    { image: personImage },
+    { image: personImage },
+    { image: personImage },
   ];
   const imageStock = [image1, image2, image3];
   return (
@@ -58,7 +65,7 @@ function Home() {
       {/* <div style={{ height: "100vh" }} /> */}
       <div className="info-container">
         <div className="info-box">
-          <h3 style={{fontFamily: 'cursive'}}>
+          <h3 style={{ fontFamily: "cursive" }}>
             The Computer Science Department is dedicated to providing
             high-quality education and research opportunities in the field of
             computer science and technology. The department offers a
@@ -75,11 +82,16 @@ function Home() {
         </div>
         <div className="profile-cards-box">
           {items.map((item, index) => (
-            <img key={index} src={item.image} className="profile-cards" />
+            <img
+              key={index}
+              src={item.image}
+              alt="user-image"
+              className="profile-cards"
+            />
           ))}
         </div>
       </div>
-      <CurvyBox
+      {/* <CurvyBox
         backgroundImage={"../../assets/download3.jpg"}
         children={
           <SliderComponent
@@ -89,12 +101,18 @@ function Home() {
             transitionType={"fade"}
           />
         }
-      />
+      /> */}
       <CurvyBox
-        backgroundColor={"#faffeb"}
-        children={<SliderComponent images={imageStock} width={"60%"} />}
+        backgroundColor={"red"}
+        children={<SliderComponent images={imageStock} width={"60%"}  />}
       />
-      <Footer />
+
+      <div
+        className="home__image-container"
+        style={{ backgroundImage: `url(${"../../assets/websiteBG.jpg"})` }}
+      >
+        <SliderComponent images={imageStock} height={'450px'} width={"90%"} />
+      </div>
     </div>
   );
 }

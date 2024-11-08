@@ -5,18 +5,25 @@ import Research from "./components/pages/Research";
 import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
 import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 
+function AppRouting() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/research" element={<Research />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
+  );
+}
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <AppRouting />
+      <Footer />
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CgChevronDown } from "react-icons/cg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const navbarOptions = [
   {
@@ -10,10 +12,14 @@ const navbarOptions = [
     navigateTo: "/home",
     dropdown: [],
   },
+  {label: 'webinar'},{label: 'Guest Lecture'},
   {
     label: "Lab",
     navigateTo: "/lab",
-    dropdown: [],
+    dropdown: [
+      { label: "Team", link: "#" },
+      { label: "Careers", link: "#" },
+    ],
   },
   {
     label: "Research",
@@ -36,31 +42,36 @@ const navbarOptions = [
   {
     label: "About",
     navigateTo: "#about",
-    dropdown: [
-      { label: "Team", link: "#" },
-      { label: "Careers", link: "#" },
-    ],
+    dropdown: [],
   },
   {
     label: "Contact",
     navigateTo: "/contact",
     dropdown: [],
   },
+  {
+    icon: faUserCircle,
+    navigateTo: "/Admin",
+    dropdown: [],
+  },
 ];
 
 const Navbar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const [selectedItem, setSelectedItem] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
+  const [mobileWidth, setMobileWidth] = useState(800);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < mobileWidth);
 
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
   };
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 700);
-    if (window.innerWidth >= 700) {
+    setIsMobile(window.innerWidth < mobileWidth);
+    if (window.innerWidth >= mobileWidth) {
       setIsMenuOpen(false);
     }
   };
@@ -79,8 +90,17 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    console.log(selectedItem);
+  }, [selectedItem]);
+
   return (
-    <nav className={`navbar ${isScrolled ? "navbar--scrolled" : ""}`}>
+    <nav
+      className={`navbar ${isScrolled ? "navbar--scrolled" : ""}`}
+      style={{
+        "--mobileview-minwidth": mobileWidth,
+      }}
+    >
       <div className="navbar__logo-container">
         {isMobile && (
           <div className="navbar__hamburger" onClick={toggleMenu}>
@@ -103,14 +123,27 @@ const Navbar = () => {
       <div className={`navbar__menu ${isMobile ? "navbar__menu--hidden" : ""}`}>
         <ul className="navbar__menu-list">
           {navbarOptions.map((item, index) => (
-            <li key={index} className="navbar__menu-item">
-              <a href={item?.navigateTo}>
-                <span>
-                  {item?.label}
-                  {item?.dropdown.length > 0 && <CgChevronDown />}
+            <li
+              key={index}
+              onClick={() => {
+                item?.dropdown?.length === 0 && setSelectedItem(item?.label);
+              }}
+              className={`navbar__menu-item ${
+                selectedItem === item?.label ? "navbar__menu-item-selected" : ""
+              }`}
+            >
+              <a href={!item?.dropdown?.length > 0 && item?.navigateTo}>
+                <span
+                  className={`${
+                    selectedItem === item?.label && "navbar__menu-item-selected"
+                  }`}
+                >
+                  {item?.label ||
+                    (item?.icon && <FontAwesomeIcon icon={item?.icon} />)}
+                  {item?.dropdown?.length > 0 && <CgChevronDown />}
                 </span>
               </a>
-              {item?.dropdown.length > 0 && (
+              {item?.dropdown?.length > 0 && (
                 <ul className="navbar__dropdown">
                   {item.dropdown.map((ele, dropdownIndex) => (
                     <li key={dropdownIndex} className="navbar__dropdown-item">
