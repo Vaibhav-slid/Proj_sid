@@ -191,12 +191,11 @@
   transition: opacity 1s ease, visibility 1s ease;
 }
 
-/* Multi-column Dropdown */
 .navbar__dropdown .navbar__dropdown-column {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 50%; /* Two columns */
+  width: 50%;
 }
 
 .navbar__dropdown-column-title {

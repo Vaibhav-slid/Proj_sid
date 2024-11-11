@@ -7,23 +7,24 @@ import image1 from "../../assets/download1.jpg";
 import image2 from "../../assets/download2.jpg";
 import image3 from "../../assets/download3.jpg";
 import personImage from "../../assets/personImage.jpg";
+import NameCard from "../common/NameCard";
 function Home() {
   const items = [
     { image: image1 },
-    // {
-    //   text: `The Computer Science Department is dedicated to providing
-    //         high-quality education and research opportunities in the field of
-    //         computer science and technology. The department offers a
-    //         comprehensive curriculum that covers a wide range of topics,
-    //         including programming, algorithms, data structures, software
-    //         engineering, artificial intelligence, machine learning, and
-    //         cybersecurity. Students are encouraged to engage in hands-on
-    //         projects, internships, and collaborative research to apply
-    //         theoretical knowledge in real-world scenarios. The department also
-    //         emphasizes the importance of ethical practices in computing and
-    //         promotes innovation through various workshops, seminars, and
-    //         competitions.`,
-    // },
+    {
+      text: `The Computer Science Department is dedicated to providing
+            high-quality education and research opportunities in the field of
+            computer science and technology. The department offers a
+            comprehensive curriculum that covers a wide range of topics,
+            including programming, algorithms, data structures, software
+            engineering, artificial intelligence, machine learning, and
+            cybersecurity. Students are encouraged to engage in hands-on
+            projects, internships, and collaborative research to apply
+            theoretical knowledge in real-world scenarios. The department also
+            emphasizes the importance of ethical practices in computing and
+            promotes innovation through various workshops, seminars, and
+            competitions.`,
+    },
     { image: image2 },
     { image: image3 },
   ];
@@ -37,7 +38,7 @@ function Home() {
   return (
     <div className="home">
       <div className="body">
-        <div className="namecard-container">
+        {/* <div className="namecard-container">
           <div className="namecard-info">
             <h1>𝑫𝒓.‎‎‎‎‎‎‎‎‎‎‎‎‎‎‏‏‎ ‎𝑺𝒊𝒅𝒅𝒉𝒂𝒓𝒕𝒉𝒂 𝑪𝒉𝒐𝒖𝒃𝒆𝒚</h1>
             <h5 style={{ alignItems: "start" }}>
@@ -59,7 +60,12 @@ function Home() {
               Resume
             </span>
           </div>
-        </div>
+        </div> */}
+        <NameCard
+          title={"𝑫𝒓.‎‎‎‎‎‎‎‎‎‎‎‎‎‎‏‏‎ ‎𝑺𝒊𝒅𝒅𝒉𝒂𝒓𝒕𝒉𝒂 𝑪𝒉𝒐𝒖𝒃𝒆𝒚"}
+          description={"hello"}
+          links={["Profiles", "Resume"]}
+        />
       </div>
       {/* <SliderComponent images={imageStock} transitionType={"slide"} /> */}
       {/* <div style={{ height: "100vh" }} /> */}
@@ -104,14 +110,20 @@ function Home() {
       /> */}
       <CurvyBox
         backgroundColor={"red"}
-        children={<SliderComponent images={imageStock} width={"60%"}  />}
+        children={
+          <SliderComponent
+            items={imageStock}
+            width={"60%"}
+            transitionType={"slide"}
+          />
+        }
       />
 
       <div
         className="home__image-container"
         style={{ backgroundImage: `url(${"../../assets/websiteBG.jpg"})` }}
       >
-        <SliderComponent images={imageStock} height={'450px'} width={"90%"} />
+        <SliderComponent items={imageStock} height={"450px"} width={"90%"} />
       </div>
     </div>
   );

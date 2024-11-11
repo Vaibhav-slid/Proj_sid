@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SliderComponent.css";
 
-const SliderComponent = ({ images, height, width, transitionType }) => {
+const SliderComponent = ({ items, height, width, transitionType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   height = height || "250px";
@@ -13,29 +13,29 @@ const SliderComponent = ({ images, height, width, transitionType }) => {
       if (transitionType === "fade") {
         setFadeOut(true);
         setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
           setFadeOut(false);
         }, 250);
       } else {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
       }
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [images.length, transitionType]);
+  }, [items.length, transitionType]);
 
   const handlePrev = () => {
     if (transitionType === "fade") {
       setFadeOut(true);
       setTimeout(() => {
         setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? images.length - 1 : prevIndex - 1
+          prevIndex === 0 ? items.length - 1 : prevIndex - 1
         );
         setFadeOut(false);
       }, 250);
     } else {
       setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+        prevIndex === 0 ? items.length - 1 : prevIndex - 1
       );
     }
   };
@@ -44,11 +44,11 @@ const SliderComponent = ({ images, height, width, transitionType }) => {
     if (transitionType === "fade") {
       setFadeOut(true);
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
         setFadeOut(false);
       }, 250);
     } else {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     }
   };
 
@@ -68,7 +68,10 @@ const SliderComponent = ({ images, height, width, transitionType }) => {
     <div className="slider" style={{ height, width }}>
       {transitionType === "fade" && (
         <div className={`slider__image ${fadeOut ? "fade-out" : "fade-in"}`}>
-          <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
+          {items.image && (
+            <img src={items[currentIndex]} alt={`Slide ${currentIndex}`} />
+          )}
+          {items.text && <div>{items[currentIndex]}</div>}
         </div>
       )}
       {transitionType === "slide" && (
@@ -79,7 +82,7 @@ const SliderComponent = ({ images, height, width, transitionType }) => {
             transition: "transform 0.5s ease",
           }}
         >
-          {images.map((image, index) => (
+          {items.map((image, index) => (
             <div className="slider__image" key={index}>
               <img src={image} alt={`Slide ${index}`} />
             </div>
@@ -101,7 +104,7 @@ const SliderComponent = ({ images, height, width, transitionType }) => {
         &#10095;
       </button>
       <div className="slider__dots">
-        {images.map((_, index) => (
+        {items.map((_, index) => (
           <div
             key={index}
             className={`slider__dot ${currentIndex === index ? "active" : ""}`}

@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CgChevronDown } from "react-icons/cg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const navbarOptions = [
   {
@@ -12,7 +12,9 @@ const navbarOptions = [
     navigateTo: "/home",
     dropdown: [],
   },
-  {label: 'webinar'},{label: 'Guest Lecture'},
+  { label: "webinar" },
+  { label: "WorkShop/STTP/FDP/Conference" },
+  { label: "Guest Lecture" },
   {
     label: "Lab",
     navigateTo: "/lab",
@@ -31,7 +33,7 @@ const navbarOptions = [
     ],
   },
   {
-    label: "Projects",
+    label: "Publications",
     navigateTo: "/projects",
     dropdown: [
       { label: "Project 1", link: "#" },
@@ -39,6 +41,7 @@ const navbarOptions = [
       { label: "Project 3", link: "#" },
     ],
   },
+  { label: "Codes/Course Material" },
   {
     label: "About",
     navigateTo: "#about",
@@ -54,12 +57,16 @@ const navbarOptions = [
     navigateTo: "/Admin",
     dropdown: [],
   },
+  {
+    icon: faSearch,
+    navigateTo: "",
+    dropdown: [],
+  },
 ];
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const [selectedItem, setSelectedItem] = useState("home");
+  const [selectedItem, setSelectedItem] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileWidth, setMobileWidth] = useState(800);
@@ -68,6 +75,10 @@ const Navbar = () => {
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
   };
+
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location]);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < mobileWidth);
@@ -129,18 +140,23 @@ const Navbar = () => {
                 item?.dropdown?.length === 0 && setSelectedItem(item?.label);
               }}
               className={`navbar__menu-item ${
-                selectedItem === item?.label ? "navbar__menu-item-selected" : ""
+                location.pathname === item?.label
+                  ? "navbar__menu-item-selected"
+                  : ""
               }`}
             >
-              <a href={!item?.dropdown?.length > 0 && item?.navigateTo}>
+              <a href={!item?.dropdown?.length > 0 && item?.navigateTo?.toString()}>
                 <span
                   className={`${
-                    selectedItem === item?.label && "navbar__menu-item-selected"
+                    location.pathname.toLowerCase() === item?.label &&
+                    "navbar__menu-item-selected"
                   }`}
                 >
                   {item?.label ||
                     (item?.icon && <FontAwesomeIcon icon={item?.icon} />)}
-                  {item?.dropdown?.length > 0 && <CgChevronDown />}
+                  {item?.dropdown?.length > 0 && item?.label && (
+                    <CgChevronDown />
+                  )}
                 </span>
               </a>
               {item?.dropdown?.length > 0 && (
