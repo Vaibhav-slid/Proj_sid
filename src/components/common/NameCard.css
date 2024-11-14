@@ -1,26 +1,37 @@
 .namecard-container {
-    padding: 4rem;
-    display: flex;
-    height: auto;
-    width: 100vw;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    background-image: linear-gradient(
-      to bottom right,
-      rgb(233, 226, 199),
-      rgba(155, 129, 86, 0.936)
-    );
-    box-shadow: 0 5px 8px rgba(155, 129, 86, 0.936);
-  }
-  
-  .namecard-links {
-    color: black;
-    cursor: pointer;
-  }
-  
-  .namecard-links:hover {
-    text-decoration-line: underline;
-    transform: translateY(5px);
-  }
-  
+  padding: 6rem;
+  display: flex;
+  height: auto;
+  width: 100vw;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(233, 226, 199),
+    rgba(155, 129, 86, 0.936)
+  );
+  box-shadow: 0 5px 8px rgba(155, 129, 86, 0.936);
+  border-radius: 0 0 20px 2 0px;
+}
+
+.namecard-info-title {
+  text-align: left;
+  font-size: 2rem;
+  font-family: cursive;
+}
+
+.namecard-info-description {
+  text-align: left;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.namecard-links {
+  color: black;
+  cursor: pointer;
+}
+
+.namecard-links:hover {
+  text-decoration-line: underline;
+  transform: translateY(5px);
+}

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./components/home/Home";
 import { Route, Routes } from "react-router-dom";
@@ -6,6 +7,9 @@ import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import WorkShop from "./components/pages/WorkShop";
+import Webinar from "./components/pages/Webinar";
+import SplashScreen from "./components/splash/SplashScreen";
 
 function AppRouting() {
   return (
@@ -15,15 +19,40 @@ function AppRouting() {
       <Route path="/research" element={<Research />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/workshop" element={<WorkShop />} />
+      <Route path="/webinar" element={<Webinar />} />
     </Routes>
   );
 }
+
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const isSplashScreenShown = sessionStorage.getItem("isSplashScreenShown");
+
+    if (isSplashScreenShown) {
+      setIsLoading(false);
+    } else {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("isSplashScreenShown", "true");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="App">
-      <Navbar />
-      <AppRouting />
-      <Footer />
+      {isLoading && <SplashScreen />}
+      {!isLoading && (
+        <>
+          <Navbar />
+          <AppRouting />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

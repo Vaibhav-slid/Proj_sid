@@ -5,8 +5,8 @@ export default function NameCard({ title, description, links }) {
   return (
     <div className="namecard-container">
       <div className="namecard-info">
-        <h1>{title}</h1>
-        <h5 style={{ alignItems: "start" }}>{description}</h5>
+        <div className="namecard-info-title" >{title}</div>
+        <div className="namecard-info-description" style={{ alignItems: "start" }}>{description}</div>
       </div>
       <div style={{ alignSelf: "flex-end" }}>
         {Array.isArray(links) &&

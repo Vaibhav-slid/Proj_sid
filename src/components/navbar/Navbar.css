@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -136,6 +136,7 @@
   font-size: 1rem;
   text-align: center;
   padding: 0 10px;
+  border-radius: 20px;
   text-transform: capitalize;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -151,11 +152,10 @@
   cursor: pointer;
 }
 
-.navbar__menu-item .selected {
+.navbar__menu-item-selected {
   background-color: #00000023;
 }
 
-/* Dropdown Styles */
 .navbar__dropdown {
   display: none;
   flex: 1 0;

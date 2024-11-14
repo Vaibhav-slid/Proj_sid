@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./SliderComponent.css";
+import image1 from "../../assets/download1.jpg";
+import image2 from "../../assets/download2.jpg";
+import image3 from "../../assets/download3.jpg";
 
-const SliderComponent = ({ items, height, width, transitionType }) => {
+
+const SliderComponent = ({items, height, width, transitionType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   height = height || "250px";
@@ -68,10 +72,9 @@ const SliderComponent = ({ items, height, width, transitionType }) => {
     <div className="slider" style={{ height, width }}>
       {transitionType === "fade" && (
         <div className={`slider__image ${fadeOut ? "fade-out" : "fade-in"}`}>
-          {items.image && (
-            <img src={items[currentIndex]} alt={`Slide ${currentIndex}`} />
-          )}
-          {items.text && <div>{items[currentIndex]}</div>}
+          <img src={items[currentIndex]} alt={`Slide ${currentIndex}`} />
+
+          {/* {items.text && <div>{items[currentIndex]}</div>} */}
         </div>
       )}
       {transitionType === "slide" && (

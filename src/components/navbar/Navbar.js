@@ -12,9 +12,9 @@ const navbarOptions = [
     navigateTo: "/home",
     dropdown: [],
   },
-  { label: "webinar" },
-  { label: "WorkShop/STTP/FDP/Conference" },
-  { label: "Guest Lecture" },
+  { label: "webinar", navigateTo: "/webinar" },
+  { label: "WorkShop/STTP/FDP/Conference", navigateTo: "/workshop" },
+  { label: "Guest Lecture", navigateTo: "/guestlecture" },
   {
     label: "Lab",
     navigateTo: "/lab",
@@ -66,7 +66,7 @@ const navbarOptions = [
 
 const Navbar = () => {
   const location = useLocation();
-  const [selectedItem, setSelectedItem] = useState("");
+  // const [selectedItem, setSelectedItem] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileWidth, setMobileWidth] = useState(800);
@@ -101,9 +101,15 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  useEffect(() => {
-    console.log(selectedItem);
-  }, [selectedItem]);
+  const getSelectedItem = () => {
+    const currentPath = location.pathname;
+    if (currentPath === "/") return "home";
+    return currentPath
+    // return navbarOptions.find((option) => option.navigateTo === currentPath)
+    //   ?.label;
+  };
+
+  const selectedItem = getSelectedItem();
 
   return (
     <nav
@@ -136,26 +142,16 @@ const Navbar = () => {
           {navbarOptions.map((item, index) => (
             <li
               key={index}
-              onClick={() => {
-                item?.dropdown?.length === 0 && setSelectedItem(item?.label);
-              }}
               className={`navbar__menu-item ${
-                location.pathname === item?.label
-                  ? "navbar__menu-item-selected"
-                  : ""
+                selectedItem.toLowerCase() === item?.navigateTo ? "navbar__menu-item-selected" : ""
               }`}
             >
-              <a href={!item?.dropdown?.length > 0 && item?.navigateTo?.toString()}>
-                <span
-                  className={`${
-                    location.pathname.toLowerCase() === item?.label &&
-                    "navbar__menu-item-selected"
-                  }`}
-                >
+              <a href={item?.navigateTo?.toString()}>
+                <span>
                   {item?.label ||
                     (item?.icon && <FontAwesomeIcon icon={item?.icon} />)}
                   {item?.dropdown?.length > 0 && item?.label && (
-                    <CgChevronDown />
+                    <CgChevronDown size={10} />
                   )}
                 </span>
               </a>

@@ -1,7 +1,7 @@
 .footer-container {
   display: flex;
   color: white;
-  min-height: 40vh;
+  /* min-height: 40vh; */
   left: 0;
   right: 0;
   bottom: 0;
@@ -14,6 +14,7 @@
     rgb(19, 35, 42),
     rgb(11, 61, 85)
   );
+  margin-top: 3rem;
 }
 
 .footer__rowbox {
