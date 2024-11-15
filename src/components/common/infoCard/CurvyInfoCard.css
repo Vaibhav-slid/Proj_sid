@@ -26,7 +26,6 @@
 
 .absolute-box {
   position: absolute;
-  right: 0;
   width: 19%;
   height: 95%;
   background-color: transparent;
@@ -37,6 +36,15 @@
     0 0 0 0 white,
     0em 0em 1em rgb(200 0 0 / 60%); */
   /* transform: rotate(180deg); */
+}
+
+.left-curve {
+  right: 0;
+}
+
+.right-curve {
+  left: 0;
+  transform: rotate(180deg);
 }
 
 .absolute-box::before {
@@ -80,6 +88,14 @@
   width: 100%;
 }
 
+.text-left .text-section {
+  order: -1;
+}
+
+.image-left .image-section {
+  order: -1;
+}
+
 .button {
   display: flex;
   min-width: 100%;
@@ -96,6 +112,6 @@
 .button:hover {
   cursor: pointer;
   background-color: rgba(255, 166, 0, 0.1);
-  border-width: 2px;
+  border: 0 1px 0 1px solid #000;
   color: orange;
 }

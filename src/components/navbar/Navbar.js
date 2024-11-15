@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CgChevronDown } from "react-icons/cg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faUserCircle, faX } from "@fortawesome/free-solid-svg-icons";
 
 const navbarOptions = [
   {
@@ -34,7 +34,7 @@ const navbarOptions = [
   },
   {
     label: "Publications",
-    navigateTo: "/projects",
+    navigateTo: "/publications",
     dropdown: [
       { label: "Project 1", link: "#" },
       { label: "Project 2", link: "#" },
@@ -103,8 +103,8 @@ const Navbar = () => {
 
   const getSelectedItem = () => {
     const currentPath = location.pathname;
-    if (currentPath === "/") return "home";
-    return currentPath
+    if (currentPath === "/") return "/home";
+    return currentPath;
     // return navbarOptions.find((option) => option.navigateTo === currentPath)
     //   ?.label;
   };
@@ -143,7 +143,9 @@ const Navbar = () => {
             <li
               key={index}
               className={`navbar__menu-item ${
-                selectedItem.toLowerCase() === item?.navigateTo ? "navbar__menu-item-selected" : ""
+                selectedItem.toLowerCase() === item?.navigateTo
+                  ? "navbar__menu-item-selected"
+                  : ""
               }`}
             >
               <a href={item?.navigateTo?.toString()}>
@@ -168,6 +170,14 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
+
+      <input
+        className="searchbar"
+        autoFocus
+        type="search"
+        placeholder="Search Here..."
+      />
+
       {isMobile && (
         <div className={`navbar__drawer ${isMenuOpen ? "open" : ""}`}>
           <div className="navbar__drawer-header">

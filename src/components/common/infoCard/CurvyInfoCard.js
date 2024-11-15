@@ -5,9 +5,16 @@ const CurvyInfoCard = ({ data }) => {
   return (
     data?.length > 0 &&
     data?.map((item, index) => (
-      <div key={index} className="container">
+      <div
+        key={index}
+        className={`container ${index % 2 === 0 ? "image-left" : "text-left"}`}
+      >
         <div className="image-section">
-          <div className="absolute-box"></div>
+          <div
+            className={`absolute-box ${
+              index % 2 === 0 ? "left-curve" : "right-curve"
+            }`}
+          ></div>
           <img src={data[index]?.image || image} alt="" />
         </div>
         <div className="text-section">

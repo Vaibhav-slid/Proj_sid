@@ -17,7 +17,7 @@ function AppRouting() {
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/research" element={<Research />} />
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/publications" element={<Projects />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/workshop" element={<WorkShop />} />
       <Route path="/webinar" element={<Webinar />} />

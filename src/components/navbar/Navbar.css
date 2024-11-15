@@ -244,6 +244,42 @@
   color: #ff8e72;
 }
 
+.searchicon {
+  padding: 0 10px;
+}
+
+.searchicon:hover {
+  color: #8e9091;
+  cursor: pointer;
+}
+
+.searchbar {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  right: 10px;
+  visibility: hidden;
+  height: 5vh;
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px black;
+  align-self: flex-end;
+  transition: visibility 1s ease-in-out;
+}
+
+.searchicon:hover .searchbar {
+  display: block;
+  visibility: visible;
+}
+
+.searchbar input {
+  color: red;
+  border: 0;
+}
+
 @media (max-width: 800px) {
   .navbar__menu {
     display: none;
