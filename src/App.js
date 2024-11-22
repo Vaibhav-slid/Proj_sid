@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import WorkShop from "./components/pages/WorkShop";
 import Webinar from "./components/pages/Webinar";
 import SplashScreen from "./components/splash/SplashScreen";
+import UpcomingEvents from "./components/common/upcomingEvents/UpcomingEvents";
 
 function AppRouting() {
   return (
@@ -21,6 +22,7 @@ function AppRouting() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/workshop" element={<WorkShop />} />
       <Route path="/webinar" element={<Webinar />} />
+      <Route path="/upcomingevents" element={<UpcomingEvents />} />
     </Routes>
   );
 }

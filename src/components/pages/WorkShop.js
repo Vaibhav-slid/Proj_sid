@@ -3,7 +3,12 @@ import NameCard from "../common/NameCard";
 import "./WorkShop.css";
 import ContentSection from "../common/contentSection/ContentSection";
 import { items } from "../home/Home";
+
+const workshopData = [
+    {title: 'Seminar on '}
+]
 export default function WorkShop() {
+
   return (
     <div className="workshop">
       <NameCard
